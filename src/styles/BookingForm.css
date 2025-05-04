@@ -1,0 +1,178 @@
+/* ==== FILE: src/styles/BookingForm.css ==== */
+.booking-container {
+    padding: 20px;
+    max-width: 100%;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Map container */
+.map-container {
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Popular locations */
+.popular-locations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.location-button {
+    padding: 8px 12px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Fare estimate */
+.fare-estimate {
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.fare-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #388e3c;
+}
+
+/* Ride options */
+.ride-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.ride-option {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ride-option.selected {
+    border-color: #4CAF50;
+    background-color: #e8f5e9;
+}
+
+.ride-option-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.ride-option-price {
+    color: #388e3c;
+}
+
+/* Additional options */
+.additional-options {
+    margin-bottom: 15px;
+}
+
+.option-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.option-checkbox input {
+    width: auto;
+}
+
+/* Payment method */
+.payment-methods {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.payment-method {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.payment-method.selected {
+    border-color: #4CAF50;
+    background-color: #e8f5e9;
+}
+
+/* Promo code */
+.promo-code {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.promo-code input {
+    flex: 1;
+}
+
+.apply-button {
+    padding: 0 15px;
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Confirm button */
+.confirm-button {
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.confirm-button:hover {
+    background-color: #388e3c;
+}

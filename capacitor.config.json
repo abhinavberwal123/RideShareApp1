@@ -1,0 +1,10 @@
+{
+  "appId": "com.yourname.rickshaw",
+  "appName": "Rickshaw",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://rideshare-9a417.web.app",
+    "cleartext": true
+  }
+}

@@ -1,0 +1,81 @@
+/* ==== FILE: src/components/Navbar.css ==== */
+
+.navbar {
+    width: 100%;
+    background-color: #004aad;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-top-left-radius: 2rem; /* Matched with container's border-radius */
+    border-top-right-radius: 2rem; /* Matched with container's border-radius */
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box; /* Added to include padding in width calculation */
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 1.6rem;
+    cursor: pointer;
+    z-index: 3;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.nav-links {
+    position: absolute;
+    top: 55px;
+    right: 10px;
+    width: 180px;
+    max-width: calc(100% - 20px); /* Added to ensure it doesn't overflow */
+    background-color: #004aad;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a:hover {
+    background-color: #003a8c;
+}
+/* ==== FILE: src/components/Navbar.css ==== */
+/* Add these styles to your existing Navbar.css file */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.logo-image {
+    height: 32px;
+    margin-right: 8px;
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

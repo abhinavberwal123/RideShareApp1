@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "rickshaw"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "rickshaw-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

@@ -1,0 +1,129 @@
+/* ==== FILE: src/styles.css ==== */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f5f6f7; /* Change from black to light gray */
+}
+
+.phone-container {
+    width: 100%;
+    max-width: 430px; /* Pixel 5 Width */
+    height: 100vh;
+    background-color: #f5f6f7;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+}
+.page-container {
+    padding: 1.5rem;
+    text-align: center;
+    flex: 1;
+    display: flex;          /* Add this line */
+    flex-direction: column; /* Add this line */
+    align-items: center;    /* Add this line */
+}
+/* Consistent heading styles */
+h1, h2 {
+    margin-top: 0.5rem;
+    color: #004aad;
+}
+/* Consistent button styling across the app */
+button {
+    padding: 12px 20px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #003a8c;
+}
+
+.kyc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.kyc-form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.kyc-form button {
+    padding: 10px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.kyc-form button:hover {
+    background-color: #003a8c;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+.footer {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #004aad;
+    color: white;
+    text-align: center;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    box-sizing: border-box;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+form input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 12px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #003a8c;
+}

@@ -1,0 +1,265 @@
+/* ==== FILE: src/styles/DriverDashboard.css ==== */
+.driver-dashboard-container {
+    padding: 20px;
+}
+
+.driver-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.status-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toggle-button.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.toggle-button.inactive {
+    background-color: #F44336;
+    color: white;
+}
+
+.driver-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+/* Earnings Card */
+.earnings-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.earning-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.earning-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.earnings-chart {
+    height: 200px;
+}
+
+/* Queue Card */
+.queue-info {
+    text-align: center;
+}
+
+.queue-position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.position-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2196F3;
+}
+
+.leave-queue-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #F44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Heat Map Card */
+.heatmap-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.heatmap-image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.heatmap-legend {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.legend-color.high {
+    background-color: #F44336;
+}
+
+.legend-color.medium {
+    background-color: #FF9800;
+}
+
+.legend-color.low {
+    background-color: #4CAF50;
+}
+
+.navigate-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Ride Requests Card */
+.requests-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.request-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.request-passenger {
+    font-weight: bold;
+}
+
+.request-route {
+    margin: 5px 0;
+    color: #666;
+}
+
+.request-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.request-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.accept-button, .reject-button {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.accept-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reject-button {
+    background-color: #F44336;
+    color: white;
+}
+
+.no-requests, .offline-message {
+    text-align: center;
+    color: #666;
+    padding: 20px 0;
+}
+
+/* Fuel Efficiency Card */
+.fuel-efficiency {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.efficiency-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.efficiency-tips h4 {
+    margin-bottom: 5px;
+}
+
+.efficiency-tips ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.efficiency-tips li {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.log-refuel-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Document Expiry Card */
+.documents-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.document-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}

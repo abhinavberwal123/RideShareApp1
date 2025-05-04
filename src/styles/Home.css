@@ -1,0 +1,115 @@
+/* ==== FILE: src/styles/Home.css ==== */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+}
+
+.hero-section {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
+    font-size: 2rem;
+    color: #004aad;
+    margin-bottom: 10px;
+}
+
+.app-tagline {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.features-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.feature-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    color: #004aad;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.feature-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.cta-section {
+    width: 100%;
+    margin-top: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.cta-button {
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.primary-button {
+    background-color: #004aad;
+    color: white;
+    border: none;
+}
+
+.primary-button:hover {
+    background-color: #003a8c;
+}
+
+.secondary-button {
+    background-color: white;
+    color: #004aad;
+    border: 2px solid #004aad;
+}
+
+.secondary-button:hover {
+    background-color: #f0f5ff;
+}
