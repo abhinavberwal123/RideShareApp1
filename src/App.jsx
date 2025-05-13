@@ -1,19 +1,23 @@
 // ==== FILE: src/App.jsx ====
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import SignIn from "./pages/SignIn"; // Fixed case: Signin → SignIn
-import SignUp from "./pages/Signup"; // Fixed case: SignUp → Signup
-import Dashboard from "./pages/Dashboard";
-import DriverDashboard from "./pages/DriverDashboard";
-import EditProfile from "./pages/EditProfile";
-import PassengerHome from "./pages/PassengerHome";
-import AdminPanel from "./pages/AdminPanel";
-import NotFound from "./pages/NotFound";
-import BookingForm from "./components/BookingForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 import "./styles.css";
+
+// Lazy load components
+const Home = lazy(() => import("./pages/Home"));
+const SignIn = lazy(() => import("./pages/SignIn"));
+const SignUp = lazy(() => import("./pages/Signup"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const DriverDashboard = lazy(() => import("./pages/DriverDashboard"));
+const EditProfile = lazy(() => import("./pages/EditProfile"));
+const PassengerHome = lazy(() => import("./pages/PassengerHome"));
+const AdminPanel = lazy(() => import("./pages/AdminPanel"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const BookingForm = lazy(() => import("./components/BookingForm"));
+const WalletRecharge = lazy(() => import("./pages/WalletRecharge"));
 
 function App() {
     return (
@@ -21,18 +25,49 @@ function App() {
             <Router>
                 <Navbar />
                 <div className="main-content">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/signin" element={<SignIn />} />
-                        <Route path="/signup" element={<SignUp />} />
-                        <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/driver-dashboard" element={<DriverDashboard />} />
-                        <Route path="/edit-profile" element={<EditProfile />} />
-                        <Route path="/passenger-home" element={<PassengerHome />} />
-                        <Route path="/admin-panel" element={<AdminPanel />} />
-                        <Route path="/booking" element={<BookingForm />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
+                    <Suspense fallback={<div className="loading">Loading...</div>}>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/signin" element={<SignIn />} />
+                            <Route path="/signup" element={<SignUp />} />
+                            <Route path="/dashboard" element={
+                                <ProtectedRoute allowedRoles={['consumer']}>
+                                    <Dashboard />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/driver-dashboard" element={
+                                <ProtectedRoute allowedRoles={['driver']}>
+                                    <DriverDashboard />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/edit-profile" element={
+                                <ProtectedRoute>
+                                    <EditProfile />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/passenger-home" element={
+                                <ProtectedRoute allowedRoles={['consumer']}>
+                                    <PassengerHome />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/admin-panel" element={
+                                <ProtectedRoute allowedRoles={['admin']}>
+                                    <AdminPanel />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/booking" element={
+                                <ProtectedRoute allowedRoles={['consumer']}>
+                                    <BookingForm />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="/wallet-recharge" element={
+                                <ProtectedRoute allowedRoles={['consumer']}>
+                                    <WalletRecharge />
+                                </ProtectedRoute>
+                            } />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </Suspense>
                 </div>
                 <Footer />
             </Router>

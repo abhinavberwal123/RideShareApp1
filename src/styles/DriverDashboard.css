@@ -1,7 +1,9 @@
 /* ==== FILE: src/styles/DriverDashboard.css ==== */
 .driver-dashboard-container {
     padding: 20px;
+    padding-bottom: 40px; /* Add extra padding at the bottom */
 }
+
 
 .driver-header {
     display: flex;
@@ -38,6 +40,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+    margin-bottom: 40px; /* Increased bottom margin */
+    width: 100%;
 }
 
 .dashboard-card {
@@ -162,6 +166,22 @@
 .requests-list {
     max-height: 300px;
     overflow-y: auto;
+    margin-bottom: 20px; /* Increased bottom margin */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.requests-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.requests-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.requests-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
 }
 
 .request-item {
@@ -257,6 +277,22 @@
 .documents-list {
     max-height: 300px;
     overflow-y: auto;
+    margin-bottom: 20px; /* Increased bottom margin */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.documents-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.documents-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.documents-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
 }
 
 .document-item {

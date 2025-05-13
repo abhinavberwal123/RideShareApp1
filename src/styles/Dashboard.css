@@ -1,13 +1,17 @@
 /* ==== FILE: src/styles/Dashboard.css ==== */
 .dashboard-container {
     padding: 20px;
+    padding-bottom: 40px; /* Add extra padding at the bottom */
 }
+
 
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     margin-top: 20px;
+    margin-bottom: 40px; /* Increased bottom margin */
+    width: 100%;
 }
 
 .dashboard-card {
@@ -101,50 +105,27 @@
     color: #f57f17;
 }
 
-/* Fare Estimator */
-.fare-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.fare-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.fare-actions button {
-    flex: 1;
-    padding: 8px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.fare-actions button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-.fare-result {
-    margin-top: 15px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.fare-result span {
-    font-size: 1.2rem;
-    color: #4CAF50;
-}
 
 /* Rides Card */
 .rides-list {
     max-height: 300px;
     overflow-y: auto;
+    margin-bottom: 20px; /* Increased bottom margin */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.rides-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.rides-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.rides-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
 }
 
 .ride-item {
@@ -196,6 +177,27 @@
 }
 
 /* Favorites Card */
+.favorites-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px; /* Increased bottom margin */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.favorites-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.favorites-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.favorites-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
 .favorite-item {
     padding: 10px;
     border-bottom: 1px solid #eee;
@@ -222,6 +224,27 @@
 }
 
 /* Upcoming Bookings */
+.upcoming-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px; /* Increased bottom margin */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.upcoming-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.upcoming-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.upcoming-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
 .upcoming-item {
     padding: 10px;
     border-bottom: 1px solid #eee;
@@ -245,4 +268,97 @@
     border-radius: 3px;
     cursor: pointer;
     margin-top: 5px;
+}
+
+/* Book a Ride Button */
+.book-ride-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.book-ride-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.book-ride-button:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Available Drivers Card */
+.drivers-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.drivers-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.drivers-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.drivers-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+.driver-item {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 8px;
+}
+
+.driver-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.driver-name {
+    font-weight: bold;
+}
+
+.driver-rating {
+    color: #FFC107;
+    font-weight: bold;
+}
+
+.driver-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.request-driver-button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background-color: #2196F3;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.request-driver-button:hover {
+    background-color: #1976D2;
 }

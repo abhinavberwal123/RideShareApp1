@@ -1,5 +1,4 @@
 // ==== FILE: src/pages/Home.jsx ====
-import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import rickshawImage from "../assets/rickshaw-hero.jpg"; // Add a hero image to your assets folder
@@ -8,7 +7,7 @@ function Home() {
     return (
         <div className="page-container home-container">
             <div className="hero-section">
-                <img src={rickshawImage} alt="E-Rickshaw Service" className="hero-image" />
+                <img src={rickshawImage} alt="E-Rickshaw Service" className="hero-image" loading="lazy" />
                 <h1 className="app-title">Delhi E-Rickshaw</h1>
                 <p className="app-tagline">Fast, affordable, and eco-friendly rides across Delhi</p>
             </div>

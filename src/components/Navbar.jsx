@@ -1,5 +1,5 @@
 // ==== FILE: src/components/Navbar.jsx ====
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/rickshaw-logo.png"; // Import your logo file
@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <Link to="/" className="logo-container">
-                <img src={logo} alt="E-Rickshaw Logo" className="logo-image" />
+                <img src={logo} alt="E-Rickshaw Logo" className="logo-image" loading="lazy" />
                 <span className="logo-text">E-Rickshaw</span>
             </Link>
             <div className="menu-icon" onClick={toggleMenu}>

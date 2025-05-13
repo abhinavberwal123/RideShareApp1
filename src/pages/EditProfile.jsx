@@ -1,30 +1,35 @@
 // ==== FILE: src/pages/EditProfile.jsx ====
-import React, { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../styles/EditProfile.css";
 
 const EditProfile = () => {
     const [activeTab, setActiveTab] = useState("basic");
+
+    // Create refs for address inputs
+    const homeAddressRef = useRef(null);
+    const workAddressRef = useRef(null);
+
     const [formData, setFormData] = useState({
         // Basic Info
-        name: "John Doe",
-        email: "johndoe@example.com",
+        name: "",
+        email: "",
         profilePicture: null,
-        phone: "9876543210",
+        phone: "",
 
         // Address Info
-        homeAddress: "123 Dwarka Sector 10, Delhi",
-        workAddress: "Cyber City, Gurgaon",
+        homeAddress: "",
+        workAddress: "",
 
         // Emergency Contacts
-        emergencyName: "Jane Doe",
-        emergencyPhone: "9876543211",
+        emergencyName: "",
+        emergencyPhone: "",
 
         // Language & Preferences
         language: "english",
         notifications: {
-            email: true,
-            sms: true,
-            push: true
+            email: false,
+            sms: false,
+            push: false
         },
 
         // ID Verification
@@ -42,6 +47,52 @@ const EditProfile = () => {
         cardExpiry: "",
         cardCvv: ""
     });
+
+    // Initialize Google Places Autocomplete for address inputs
+    useEffect(() => {
+        // Check if Google Maps API is loaded and we're on the address tab
+        if (window.google && window.google.maps && activeTab === "address") {
+            // Initialize autocomplete for home address
+            if (homeAddressRef.current) {
+                const homeAutocomplete = new window.google.maps.places.Autocomplete(homeAddressRef.current, {
+                    componentRestrictions: { country: "in" }, // Restrict to India
+                    fields: ["address_components", "formatted_address", "geometry", "name"],
+                    types: ["geocode", "establishment"]
+                });
+
+                // Add place_changed event listener
+                homeAutocomplete.addListener("place_changed", () => {
+                    const place = homeAutocomplete.getPlace();
+                    if (place.formatted_address) {
+                        setFormData({
+                            ...formData,
+                            homeAddress: place.formatted_address
+                        });
+                    }
+                });
+            }
+
+            // Initialize autocomplete for work address
+            if (workAddressRef.current) {
+                const workAutocomplete = new window.google.maps.places.Autocomplete(workAddressRef.current, {
+                    componentRestrictions: { country: "in" }, // Restrict to India
+                    fields: ["address_components", "formatted_address", "geometry", "name"],
+                    types: ["geocode", "establishment"]
+                });
+
+                // Add place_changed event listener
+                workAutocomplete.addListener("place_changed", () => {
+                    const place = workAutocomplete.getPlace();
+                    if (place.formatted_address) {
+                        setFormData({
+                            ...formData,
+                            workAddress: place.formatted_address
+                        });
+                    }
+                });
+            }
+        }
+    }, [activeTab, formData]); // Re-run if activeTab or formData changes
 
     const [otpSent, setOtpSent] = useState(false);
     const [otp, setOtp] = useState("");
@@ -251,21 +302,25 @@ const EditProfile = () => {
 
                         <div className="form-group">
                             <label>Home Address</label>
-                            <textarea
+                            <input
+                                type="text"
                                 name="homeAddress"
                                 value={formData.homeAddress}
                                 onChange={handleInputChange}
-                                rows={3}
+                                placeholder="Enter home address"
+                                ref={homeAddressRef}
                             />
                         </div>
 
                         <div className="form-group">
                             <label>Work Address</label>
-                            <textarea
+                            <input
+                                type="text"
                                 name="workAddress"
                                 value={formData.workAddress}
                                 onChange={handleInputChange}
-                                rows={3}
+                                placeholder="Enter work address"
+                                ref={workAddressRef}
                             />
                         </div>
                     </div>
@@ -369,7 +424,7 @@ const EditProfile = () => {
                         </div>
 
                         <div className="form-group">
-                            <label>Driver's License Number</label>
+                            <label>Driver&apos;s License Number</label>
                             <input
                                 type="text"
                                 name="driverLicense"

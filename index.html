@@ -9,6 +9,7 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#4285f4">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Rickshaw">
     <link rel="apple-touch-icon" href="/icons/icon-144x144.png">
@@ -16,6 +17,7 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/main.jsx"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnwL0ZSVjuB8uBWHXXBNZWHQoLIIDvETw&libraries=places" async defer></script>
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -28,7 +30,8 @@
                 });
         });
     }
-    localStorage.setItem('firebase:debug', '*');
+    // Disable verbose Firebase debugging to reduce network requests
+    // localStorage.setItem('firebase:debug', '*');
 </script>
 </body>
 </html>

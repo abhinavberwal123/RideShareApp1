@@ -23,9 +23,19 @@ const apiRoutes = [
     'https://firebase.googleapis.com/'
 ];
 
+// Firebase logging URLs to bypass service worker
+const bypassUrls = [
+    'https://firebaselogging-pa.googleapis.com/'
+];
+
 // Helper function to determine if a request is an API request
 const isApiRequest = (url) => {
     return apiRoutes.some(route => url.startsWith(route));
+};
+
+// Helper function to determine if a request should bypass the service worker
+const shouldBypass = (url) => {
+    return bypassUrls.some(route => url.startsWith(route));
 };
 
 // Helper function to determine if a request is for a static asset
@@ -54,6 +64,11 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
     // Parse the URL but don't use the variable directly to avoid ESLint warning
     new URL(event.request.url);
+
+    // Bypass service worker for certain URLs (like Firebase logging)
+    if (shouldBypass(event.request.url)) {
+        return; // Let the browser handle the request normally
+    }
 
     // Handle API requests with network-first strategy
     if (isApiRequest(event.request.url)) {

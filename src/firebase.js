@@ -1,7 +1,7 @@
 // src/firebase.js
 import { getApp, getApps, initializeApp } from "firebase/app";
-import { getAuth, connectAuthEmulator } from "firebase/auth";
-import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { initializeFirestore, CACHE_SIZE_UNLIMITED, persistentLocalCache } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import firebaseConfig from "./config/firebaseConfig";
 
@@ -14,23 +14,16 @@ console.log("Firebase app initialized:", app.name);
 
 // Initialize services
 export const auth = getAuth(app);
-export const db = getFirestore(app);
+// Initialize Firestore with persistent cache and explicit database ID
+export const db = initializeFirestore(app, {
+    cache: persistentLocalCache({
+        cacheSizeBytes: CACHE_SIZE_UNLIMITED
+    }),
+    databaseId: 'main' // Use a custom database ID instead of (default)
+});
 export const storage = getStorage(app);
 
-console.log("Firebase services initialized");
-
-// Try to enable persistence
-try {
-    enableIndexedDbPersistence(db)
-        .then(() => {
-            console.log("Firestore persistence enabled successfully");
-        })
-        .catch((err) => {
-            console.error("Firestore persistence error:", err.code);
-        });
-} catch (error) {
-    console.error("Firebase initialization error:", error);
-}
+console.log("Firebase services initialized with persistent cache and custom database ID 'main'");
 
 // Export app as default
 export default app;

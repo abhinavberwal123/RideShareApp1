@@ -7,32 +7,25 @@ import "../styles/DriverDashboard.css"; // You'll need to create this CSS file
 // Register Chart.js components
 Chart.register(...registerables);
 
-// Mock data - replace with actual API calls in production
-const mockEarnings = {
-    daily: 850,
-    weekly: 5600,
-    monthly: 22400,
+// Initialize with empty data - will be populated from database
+const emptyEarnings = {
+    daily: 0,
+    weekly: 0,
+    monthly: 0,
     dailyData: [
-        { day: "Mon", amount: 750 },
-        { day: "Tue", amount: 850 },
-        { day: "Wed", amount: 920 },
-        { day: "Thu", amount: 780 },
-        { day: "Fri", amount: 1050 },
-        { day: "Sat", amount: 1200 },
-        { day: "Sun", amount: 950 },
+        { day: "Mon", amount: 0 },
+        { day: "Tue", amount: 0 },
+        { day: "Wed", amount: 0 },
+        { day: "Thu", amount: 0 },
+        { day: "Fri", amount: 0 },
+        { day: "Sat", amount: 0 },
+        { day: "Sun", amount: 0 },
     ],
 };
 
-const mockRideRequests = [
-    { id: 1, passenger: "Rahul S.", pickup: "Karol Bagh", dropoff: "Connaught Place", fare: 120, distance: "3.2 km", time: "5 min away" },
-    { id: 2, passenger: "Priya M.", pickup: "Lajpat Nagar", dropoff: "Defence Colony", fare: 150, distance: "4.5 km", time: "8 min away" },
-];
+const emptyRideRequests = [];
 
-const mockDocuments = [
-    { id: 1, name: "Driver's License", expiryDate: "2023-12-15", status: "Valid" },
-    { id: 2, name: "Vehicle Insurance", expiryDate: "2023-08-30", status: "Expiring Soon" },
-    { id: 3, name: "Pollution Certificate", expiryDate: "2023-07-10", status: "Expiring Soon" },
-];
+const emptyDocuments = [];
 
 const DriverDashboard = () => {
     const [isActive, setIsActive] = useState(true);
@@ -41,11 +34,11 @@ const DriverDashboard = () => {
 
     // Chart data
     const chartData = {
-        labels: mockEarnings.dailyData.map(item => item.day),
+        labels: emptyEarnings.dailyData.map(item => item.day),
         datasets: [
             {
                 label: 'Daily Earnings (₹)',
-                data: mockEarnings.dailyData.map(item => item.amount),
+                data: emptyEarnings.dailyData.map(item => item.amount),
                 fill: false,
                 backgroundColor: '#4CAF50',
                 borderColor: '#4CAF50',
@@ -112,15 +105,15 @@ const DriverDashboard = () => {
                     <div className="earnings-summary">
                         <div className="earning-item">
                             <span>Today</span>
-                            <span className="earning-amount">₹{mockEarnings.daily}</span>
+                            <span className="earning-amount">₹{emptyEarnings.daily}</span>
                         </div>
                         <div className="earning-item">
                             <span>This Week</span>
-                            <span className="earning-amount">₹{mockEarnings.weekly}</span>
+                            <span className="earning-amount">₹{emptyEarnings.weekly}</span>
                         </div>
                         <div className="earning-item">
                             <span>This Month</span>
-                            <span className="earning-amount">₹{mockEarnings.monthly}</span>
+                            <span className="earning-amount">₹{emptyEarnings.monthly}</span>
                         </div>
                     </div>
                     <div className="earnings-chart">
@@ -171,8 +164,8 @@ const DriverDashboard = () => {
                     <h3>Incoming Ride Requests</h3>
                     {isActive ? (
                         <div className="requests-list">
-                            {mockRideRequests.length > 0 ? (
-                                mockRideRequests.map((request) => (
+                            {emptyRideRequests.length > 0 ? (
+                                emptyRideRequests.map((request) => (
                                     <div key={request.id} className="request-item">
                                         <div className="request-passenger">{request.passenger}</div>
                                         <div className="request-route">
@@ -231,29 +224,33 @@ const DriverDashboard = () => {
                 <div className="dashboard-card documents-card">
                     <h3>Document Expiry Alerts</h3>
                     <div className="documents-list">
-                        {mockDocuments.map((doc) => {
-                            const expiryDate = new Date(doc.expiryDate);
-                            const today = new Date();
-                            const daysUntilExpiry = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24));
+                        {emptyDocuments.length > 0 ? (
+                            emptyDocuments.map((doc) => {
+                                const expiryDate = new Date(doc.expiryDate);
+                                const today = new Date();
+                                const daysUntilExpiry = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24));
 
-                            return (
-                                <div
-                                    key={doc.id}
-                                    className={`document-item ${daysUntilExpiry <= 30 ? 'expiring-soon' : ''}`}
-                                >
-                                    <div className="document-name">{doc.name}</div>
-                                    <div className="document-expiry">
-                                        Expires: {doc.expiryDate}
-                                        {daysUntilExpiry <= 30 && (
-                                            <span className="expiry-alert">
-                        ({daysUntilExpiry} days left)
-                      </span>
-                                        )}
+                                return (
+                                    <div
+                                        key={doc.id}
+                                        className={`document-item ${daysUntilExpiry <= 30 ? 'expiring-soon' : ''}`}
+                                    >
+                                        <div className="document-name">{doc.name}</div>
+                                        <div className="document-expiry">
+                                            Expires: {doc.expiryDate}
+                                            {daysUntilExpiry <= 30 && (
+                                                <span className="expiry-alert">
+                            ({daysUntilExpiry} days left)
+                          </span>
+                                            )}
+                                        </div>
+                                        <button className="renew-button">Renew Now</button>
                                     </div>
-                                    <button className="renew-button">Renew Now</button>
-                                </div>
-                            );
-                        })}
+                                );
+                            })
+                        ) : (
+                            <p className="no-documents">No documents added yet. Add your documents for verification.</p>
+                        )}
                     </div>
                 </div>
             </div>
